@@ -1,9 +1,10 @@
 import React from 'react';
+import ImageContainer from './ImageContainer';
 
-function Header(){
+function Header(props){
     return(
         <div>
-            Play
+            <ImageContainer image={props.image} />
         </div>
     )
 }

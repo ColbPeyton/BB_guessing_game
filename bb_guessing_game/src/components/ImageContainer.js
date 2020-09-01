@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ImageContainer(){
+function ImageContainer(props){
     return(
         <div>
-            Play
+            <img src={props.image.src} alt={props.image.alt} />
         </div>
     )
 }
