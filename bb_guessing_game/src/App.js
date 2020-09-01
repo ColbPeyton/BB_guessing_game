@@ -4,7 +4,7 @@ import PlayScreen from './components/PlayScreen';
 import './styles/App.scss';
 
 function App() {
-  const [titleActive, setTitleActive] = useState(true);
+  const [titleActive, setTitleActive] = useState(false);
 
   const disableTitle = () => {
     setTitleActive(false)
