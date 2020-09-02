@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Quote(){
+function Quote(props){
     return(
         <div>
-            Play
+            <p>{props.quote}</p>
         </div>
     )
 }

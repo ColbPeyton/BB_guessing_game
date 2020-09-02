@@ -1,0 +1,13 @@
+@import './colors';
+
+.answer-button{
+    padding: 1rem 0;
+    background: $seconday-green-light;
+    margin: 20px 0;
+    border: 3px solid $secondary-green-dark;
+
+    &:hover{
+        border-color:$primary-yellow;
+    }
+
+}

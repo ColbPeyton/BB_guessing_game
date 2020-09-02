@@ -1,9 +1,15 @@
 import React from 'react';
+import '../styles/Answer.scss';
 
-function Answer(){
+function Answer(props){
+
+    function handleClick(){
+        props.returnUserChoice(props.answer.correct)
+    }
+
     return(
-        <div>
-            
+        <div className='answer-button' onClick={()=>{handleClick()}}>
+          <p>{props.answer.name}</p>
         </div>
     )
 }

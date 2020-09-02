@@ -6,8 +6,8 @@ import '../styles/TitleScreen.scss';
 
 function TitleScreen(props){
 
-    function callParentFunction(){
-        props.updateActive();
+    function deactivateScreen(){
+        props.updateActive('title');
     }
 
     return(
@@ -16,7 +16,7 @@ function TitleScreen(props){
                 <Header image={{src: logo, alt: 'Breaking Bad Logo'}}/>
             </div>
             <h2>Guessing Game</h2>
-            <button className='.btn' onClick={()=>{callParentFunction()}}>Play</button>
+            <button className='.btn' onClick={()=>{deactivateScreen()}}>Play</button>
         </div>
     )
 }
