@@ -6,8 +6,8 @@ const possibleAnswers = [
     "Gustavo Fring",
     "Mike Ehrmantraut",
     "Hank Schrader",
-    "Badger",
-    "The fly",
+    "Jimmy McGill",
+    "Hector Salamanca"
 ]
 
 

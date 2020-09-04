@@ -4,48 +4,57 @@ import Answer from './Answer';
 
 import getQuote from '../helpers/getQuote';
 import getAnswers from '../helpers/getAnswers';
+import getImage from '../helpers/getImage';
+import getCharacters from '../helpers/getAllCharacters'; 
+import filterByKey from '../helpers/arrayHelper';
 
 
 class PlayScreen extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            quoteList: ['t1w', 't2h', 't3s', 't4w', 't5w'],
-            answerList: ["Walter White", "Hank Schrader", "Saul Goodman", "Walter White", "Walter White"],
-            userCorrectAnswers : []
+            quoteList: [],
+            answerList: [],
+            characterImages: [],
+            userCorrectAnswers : [],
+            loadComplete: false
         }
     }
 
-    // async componentDidMount(){
-    //     let tempQuoteList;
-    //     let tempAnswerList;
+    async componentDidMount(){
+        let numberOfQuestions = 5;
 
-    //     // Convert promise data to value and store in temp array
-    //     await getQuote(5)
-    //     .then(data =>{
-    //         tempQuoteList = this.generateList(data, 'quote');
-    //         tempAnswerList = this.generateList(data, 'author');
-            
-    //     })
-
-    //     this.setState(()=>{
-    //         return{
-    //             quoteList : tempQuoteList,
-    //             answerList : tempAnswerList
-    //         }
-    //     })
-
-    //     console.log(this.state);
-    // }
-
-    // Returns data and stores correct values in array
-    generateList(list, value){
-        const tempList = [];
-        list.forEach(quote =>{
-            tempList.push(quote[value]);
+        const characterList = await getCharacters.getAmountOfCharacters(numberOfQuestions);
+         
+        const answerList = [];
+       
+        characterList.forEach(character =>{
+            answerList.push(character);
         })
-        return tempList; 
+
+        const tempQuoteList = await getQuote.getAmountOfData(answerList, getQuote.getQuote);
+        const tempImageList = await getQuote.getAmountOfData(answerList, getImage.getImage);
+
+
+        const quoteList = tempQuoteList.map(function(item) { return item["quote"]; });
+        const imageList = filterByKey(tempImageList, 'img');
+
+
+        console.log(answerList)
+        console.log(imageList)
+        console.log(quoteList)
+
+    
+        this.setState(()=>{
+            return{
+                quoteList : quoteList,
+                answerList : answerList,
+                characterImages: imageList,
+                loadComplete: true
+            }
+        })
     }
+
 
     generateAnswerList = () =>{
         const {answerList} = this.state;
@@ -55,10 +64,10 @@ class PlayScreen extends React.Component{
     }
 
     renderAnswerList = () =>{
-        const {answerList} = this.state;
+        const {loadComplete} = this.state;
         const list = this.generateAnswerList();
 
-        return answerList
+        return loadComplete
         ? list.map((answer,index)=> <Answer answer={answer} key={index} returnUserChoice={this.checkIfCorrect}/>)
         : '';
     }
@@ -104,7 +113,6 @@ class PlayScreen extends React.Component{
         return(
             <div>
                <div>
-                   
                     {this.renderQuote()}
                     {this.renderAnswerList()}
                </div>
