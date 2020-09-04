@@ -1,5 +1,7 @@
 const invalid = require('../__data__/invalidCharacters');
 
+// Not all characters from API have quotes.
+// Pulling data from quote endpoint to get relevant characters
 export async function getAllCharacterQuotes(){
     const response = await fetch('https://breakingbadapi.com/api/quotes');
     const data = await response.json();
@@ -14,15 +16,9 @@ export async function getAmountOfCharacters(amount){
 }
 
 function generateArrayOfCharacters(characters){
-
     const returnedCharacters = [];
 
-    const tempChracters = characters.reduce((unique, o) => {
-        if(!unique.some(obj => obj.author === o.author || invalid.characters.includes(o.author))) {
-          unique.push(o);
-        }
-        return unique;
-    },[]);
+    const tempChracters = filterUniqueNames(characters)
 
     tempChracters.forEach(character => {
         if(invalid.names.includes(character.author)){
@@ -34,8 +30,18 @@ function generateArrayOfCharacters(characters){
     return returnedCharacters;
 }
 
+function filterUniqueNames(characters){
+    const temp = characters.reduce((unique, o) => {
+        if(!unique.some(obj => obj.author === o.author || invalid.characters.includes(o.author))) {
+          unique.push(o);
+        }
+        return unique;
+    },[]);
+    return temp;
+}
 
-function fixIssueWithAPINames(name){
+// upadate name if it has issue with API img endpoint 
+export function fixIssueWithAPINames(name){
     let updatedName;
     switch(name){
         case 'Gus Fring':
@@ -61,5 +67,6 @@ function generateRandomCharacterArray(amount, characterArr){
 
 export default {
     getAmountOfCharacters,
-    getAllCharacterQuotes
+    getAllCharacterQuotes,
+    fixIssueWithAPINames
 }

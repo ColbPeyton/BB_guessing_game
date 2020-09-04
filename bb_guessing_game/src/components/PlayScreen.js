@@ -27,22 +27,33 @@ class PlayScreen extends React.Component{
         const characterList = await getCharacters.getAmountOfCharacters(numberOfQuestions);
          
         const answerList = [];
-       
+        const quoteList = [];
+        const imageList = [];
+
         characterList.forEach(character =>{
             answerList.push(character);
         })
 
         const tempQuoteList = await getQuote.getAmountOfData(answerList, getQuote.getQuote);
+
         const tempImageList = await getQuote.getAmountOfData(answerList, getImage.getImage);
 
+        await Promise.resolve([tempQuoteList, tempImageList])
+        .then(el =>{
+            console.log(el)
+            el[0].forEach(e => {
+                console.log(e)
+                quoteList.push(e[0].quote)
+            })
+            el[1].forEach(e => {
+                imageList.push(e[0].img)
+            })
+        })
 
-        const quoteList = tempQuoteList.map(function(item) { return item["quote"]; });
-        const imageList = filterByKey(tempImageList, 'img');
 
-
-        console.log(answerList)
-        console.log(imageList)
-        console.log(quoteList)
+        // console.log(answerList)
+        // console.log(imageList)
+        // console.log(quoteList)
 
     
         this.setState(()=>{
@@ -56,6 +67,7 @@ class PlayScreen extends React.Component{
     }
 
 
+    // Based on first value in answer list, generate wrong answer list
     generateAnswerList = () =>{
         const {answerList} = this.state;
         const currentAnswer = answerList[0];

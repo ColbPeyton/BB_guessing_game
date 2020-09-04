@@ -1,9 +1,11 @@
 module.exports = function filterByKey(array, key) {
-    console.log(array)
-    array.forEach(element =>{
-        element.forEach(e => {
-            console.log(e)
-        })
-    })
+    const result = [];
+    console.log(JSON.stringify(array));
 
+    for(let i = 0; i < array.length; i++){
+        result.push(array[i][0][key])
+    }
+
+    console.log(result)
+    return result;
   }

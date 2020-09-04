@@ -1,5 +1,6 @@
 export async function getQuote(name){
-    const updatedName = name.replace(/\s/g, '+');
+    let updatedName = fixIssueWithAPINames(name);
+    updatedName.replace(/\s/g, '+');
     try{
         const response = await fetch(`https://www.breakingbadapi.com/api/quote/random?author=${updatedName}`);
         const data = await response.json();
@@ -11,6 +12,22 @@ export async function getQuote(name){
         return undefined;
     }
 
+}
+
+// update name due to API issue with character
+function fixIssueWithAPINames(name){
+    let updatedName;
+    switch(name){
+        case 'Gustavo Fring':
+            updatedName = 'Gus Fring';
+            break;
+        case 'Henry Schrader':
+            updatedName = "Hank Schrader";
+            break;
+        default:
+            updatedName = name;
+    }
+    return updatedName;
 }
 
 

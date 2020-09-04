@@ -5,7 +5,7 @@ const possibleAnswers = [
     "Saul Goodman",
     "Gustavo Fring",
     "Mike Ehrmantraut",
-    "Hank Schrader",
+    "Henry Schrader",
     "Jimmy McGill",
     "Hector Salamanca"
 ]
