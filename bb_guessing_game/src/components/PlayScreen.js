@@ -6,8 +6,6 @@ import getQuote from '../helpers/getQuote';
 import getAnswers from '../helpers/getAnswers';
 import getImage from '../helpers/getImage';
 import getCharacters from '../helpers/getAllCharacters'; 
-import filterByKey from '../helpers/arrayHelper';
-
 
 class PlayScreen extends React.Component{
     constructor(props){
@@ -27,34 +25,15 @@ class PlayScreen extends React.Component{
         const characterList = await getCharacters.getAmountOfCharacters(numberOfQuestions);
          
         const answerList = [];
-        const quoteList = [];
-        const imageList = [];
+
 
         characterList.forEach(character =>{
             answerList.push(character);
         })
 
-        const tempQuoteList = await getQuote.getAmountOfData(answerList, getQuote.getQuote);
+        const quoteList = await getQuote.getAmountOfData(answerList, getQuote.getQuote, 'quote');
 
-        const tempImageList = await getQuote.getAmountOfData(answerList, getImage.getImage);
-
-        await Promise.resolve([tempQuoteList, tempImageList])
-        .then(el =>{
-            console.log(el)
-            el[0].forEach(e => {
-                console.log(e)
-                quoteList.push(e[0].quote)
-            })
-            el[1].forEach(e => {
-                imageList.push(e[0].img)
-            })
-        })
-
-
-        // console.log(answerList)
-        // console.log(imageList)
-        // console.log(quoteList)
-
+        const imageList = await getQuote.getAmountOfData(answerList, getImage.getImage, 'img');
     
         this.setState(()=>{
             return{
@@ -85,8 +64,9 @@ class PlayScreen extends React.Component{
     }
 
     renderQuote = () =>{
-        const {quoteList} = this.state;
-        return quoteList
+        const {quoteList, loadComplete} = this.state;
+        console.log(quoteList)
+        return loadComplete
         ? <Quote quote={quoteList[0]}/>
         : '';
     }

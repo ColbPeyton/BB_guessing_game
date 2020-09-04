@@ -31,7 +31,7 @@ function fixIssueWithAPINames(name){
 }
 
 
-export async function getAmountOfData(namesArr, callback){
+export async function getAmountOfData(namesArr, callback, key){
     const promArr = [];
     const quoteArr = [];
     await namesArr.forEach (name =>{
@@ -41,10 +41,9 @@ export async function getAmountOfData(namesArr, callback){
 
     promArr.forEach(prom =>{
         prom.then(result => {
-            quoteArr.push(result); 
+            quoteArr.push(result[0][key]); 
          });
     })
-
     return quoteArr;
 }
 
