@@ -6,7 +6,6 @@ const possibleAnswers = [
     "Gustavo Fring",
     "Mike Ehrmantraut",
     "Henry Schrader",
-    "Jimmy McGill",
     "Hector Salamanca"
 ]
 

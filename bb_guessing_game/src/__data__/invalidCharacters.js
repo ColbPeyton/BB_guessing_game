@@ -8,6 +8,11 @@ const invalid = {
     names: [
         "Hank Schrader",
         'Gus Fring'
+    ],
+
+    images: [
+        "Henry Schrader",
+        "Jesse Pinkman"
     ]
 }
 

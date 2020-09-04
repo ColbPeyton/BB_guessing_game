@@ -1,10 +1,9 @@
 import React from 'react';
+import '../styles/ImageContainer.scss';
 
 function ImageContainer(props){
     return(
-        <div>
-            <img src={props.image.src} alt={props.image.alt} />
-        </div>
+        <img src={props.image.src} alt={props.image.alt} />
     )
 }
 

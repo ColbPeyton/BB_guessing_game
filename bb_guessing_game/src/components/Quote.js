@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/Quote.scss';
 
 function Quote(props){
 
     return(
-        <div>
+        <div className='quote'>
             <p>{props.quote}</p>
         </div>
     )

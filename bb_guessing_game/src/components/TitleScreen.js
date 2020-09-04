@@ -13,7 +13,7 @@ function TitleScreen(props){
     return(
         <div className='title-screen-container'>
             <div className='title-screen-logo'>
-                <Header image={{src: logo, alt: 'Breaking Bad Logo'}}/>
+                <Header class={'logo-img'} image={{src: logo, alt: 'Breaking Bad Logo'}}/>
             </div>
             <h2>Guessing Game</h2>
             <button className='.btn' onClick={()=>{deactivateScreen()}}>Play</button>
