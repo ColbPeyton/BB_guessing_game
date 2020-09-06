@@ -1,8 +1,10 @@
 import React from 'react';
+
 import Quote from './Quote';
 import Answer from './Answer';
 import ImageContainer from './ImageContainer';
 import Header from './Header';
+import Loading from './Loading';
 
 import getQuote from '../helpers/getQuote';
 import getAnswers from '../helpers/getAnswers';
@@ -32,10 +34,6 @@ class PlayScreen extends React.Component{
 
         const output = this.filterMultiDataIntoSingleObject(quoteList, imageList)
         
-        console.log(output)
-
-
-
         setTimeout(()=>{
             this.setState(()=>{
                 return{
@@ -70,11 +68,11 @@ class PlayScreen extends React.Component{
                 name: quote[i].name, 
                 img: '', 
                 quote: quote[i].key
-            };
+            }; 
 
             for(let j = 0; j < image.length; j++){
                 image[j].name = image[j].name === 'Henry Schrader' ? 'Hank Schrader' : image[j].name;
-                image[j].name = image[j].name === 'Gus Fring' ? 'Gustavo Fring' : image[j].name;
+                image[j].name = image[j].name === 'Gustavo Fring' ? 'Gus Fring' : image[j].name;
                 if(quote[i].name === image[j].name){
                     temp.img = image[j].key
                     image.splice(j, 1);
@@ -138,7 +136,12 @@ class PlayScreen extends React.Component{
             </div>
             )
         }else{
-            return 'Loading...'
+            return(
+                <div className="play-screen-container">
+                    <Header score={this.state.currentScore} />
+                    <Loading />
+                </div>
+            )
         }
     }
 

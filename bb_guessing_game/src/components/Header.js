@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Header.scss';
 
 function Header(props){
+
     return(
         <div className='header-container'>
                 <h3 className='logo'>Breaking Bad Quotes</h3>
