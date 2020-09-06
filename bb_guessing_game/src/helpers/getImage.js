@@ -21,7 +21,7 @@ function getImageFromAnotherSource(name){
         default:
             url = 'https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Hank_Schrader_S5B.png/440px-Hank_Schrader_S5B.png';
     }
-    return Promise.resolve([{name: name, img: url}])
+    return [{name: name, img: url}]
 }
 
 function checkIfValidName(name){

@@ -31,20 +31,13 @@ function fixIssueWithAPINames(name){
 }
 
 
-export async function getAmountOfData(namesArr, callback, key, name){
-    const promArr = [];
-    const quoteArr = [];
-    await namesArr.forEach (name =>{
-         let result = callback(name);
-        promArr.push(result)
+export async function getAmountOfData(namesArr, callback){
+    const pArr = [];
+    namesArr.forEach (name =>{
+        pArr.push(callback(name));
     });
 
-    promArr.forEach(prom =>{
-        prom.then(result => {
-            quoteArr.push({key: result[0][key], name:result[0][name]}); 
-         });
-    })
-    return quoteArr;
+   return await Promise.all(pArr);
 }
 
 // Not needed due to api having random quote endpoint

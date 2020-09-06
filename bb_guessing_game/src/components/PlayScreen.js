@@ -15,9 +15,7 @@ class PlayScreen extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            quoteList: [],
-            answerList: [],
-            imageList: [],
+            gameInstance: [],
             userCorrectAnswers : [],
             loadComplete: false,
             currentScore: 0
@@ -28,57 +26,72 @@ class PlayScreen extends React.Component{
         let numberOfQuestions = 5;
 
         const answerList = await getCharacters.getAmountOfCharacters(numberOfQuestions);
-         
+        const quoteList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getQuote.getQuote), 'quote', 'author');
+        const imageList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getImage.getImage), 'img', 'name');
 
 
-        // characterList.forEach(character =>{
-        //     answerList.push(character);
-        // })
+        const output = this.filterMultiDataIntoSingleObject(quoteList, imageList)
+        
+        console.log(output)
 
 
-        const data = await this.sequence(
-            getQuote.getAmountOfData(answerList, getQuote.getQuote, 'quote', 'author'), 
-            getQuote.getAmountOfData(answerList, getImage.getImage, 'img', 'name')
-            );
 
-            // TODO Fix issue with data setup, filter relevant quote/author/image into array of length 3
-            // can have multiple quotes by same character
-        const quoteList = await data[0];
-        const imageList = await data[1];
-
-        const filtered = []
-        answerList.forEach(answer => {
-            filtered.push(
-                
-            )
-        })
-
-        console.log(quoteList, imageList, answerList)
-
-
-        // setTimeout(()=>{
-        //     this.setState(()=>{
-        //         return{
-        //             quoteList : quoteList,
-        //             answerList : answerList,
-        //             imageList: imageList,
-        //             loadComplete: true,
-        //             currentScore: 0
-        //         }
-        //     })
-        // }, 500)
+        setTimeout(()=>{
+            this.setState(()=>{
+                return{
+                    gameInstance: output,
+                    loadComplete: true,
+                    currentScore: 0
+                }
+            })
+        }, 500)
        
     }
 
-    async sequence(pOne, pTwo) {
-        return await Promise.all([pOne, pTwo]);  
+    // Data is returned as multiple nested arrays, change into single array of objects
+    modifyDataForState = (arr, key, name) =>{
+        const returnArr = [];
+        arr.forEach((el)=>{
+            returnArr.push(
+                {
+                    name: el[0][name],
+                    key: el[0][key]
+                }
+            )
+        })
+        return returnArr;
     }
 
+    filterMultiDataIntoSingleObject = (quote, image) =>{
+        const filtered = [];
+        for(let i = 0; i < quote.length; i++){
+
+            const temp = {
+                name: quote[i].name, 
+                img: '', 
+                quote: quote[i].key
+            };
+
+            for(let j = 0; j < image.length; j++){
+                image[j].name = image[j].name === 'Henry Schrader' ? 'Hank Schrader' : image[j].name;
+                image[j].name = image[j].name === 'Gus Fring' ? 'Gustavo Fring' : image[j].name;
+                if(quote[i].name === image[j].name){
+                    temp.img = image[j].key
+                    image.splice(j, 1);
+                    break;
+                }
+            }
+
+            filtered.push(temp);
+        }
+        return filtered;
+    }
+    
 
     // Based on first value in answer list, generate wrong answer list
     generateAnswerList = () =>{
-        const {answerList} = this.state;
-        const currentAnswer = answerList[0];
+        const {gameInstance} = this.state;
+        const currentAnswer = gameInstance[0].name;
         return getAnswers(currentAnswer);
 
     }
@@ -93,16 +106,16 @@ class PlayScreen extends React.Component{
     }
 
     renderQuote = () =>{
-        const {quoteList} = this.state;
-        return quoteList[0]
-        ? <Quote quote={quoteList[0]}/>
+        const {gameInstance} = this.state;
+        return gameInstance[0]
+        ? <Quote quote={gameInstance[0].quote}/>
         : '';
     }
 
     renderImage = () => {
-        const{imageList, answerList} = this.state;
-        return imageList[0]
-        ? <ImageContainer image={{src: imageList[0], alt: answerList[0]}}/>
+        const{gameInstance} = this.state;
+        return gameInstance[0]
+        ? <ImageContainer image={{src: gameInstance[0].img, alt: gameInstance[0].name}}/>
         : ''
 
     }
@@ -143,17 +156,13 @@ class PlayScreen extends React.Component{
 
     // Removes first vale from lists, 
     moveToNextQuestion = () =>{
-        const {quoteList, answerList, imageList} = this.state;
+        const {gameInstance} = this.state;
 
-        quoteList.shift();
-        answerList.shift();
-        imageList.shift();
+        gameInstance.shift();
 
-        if(quoteList[0] !== undefined){
+        if(gameInstance[0] !== undefined){
             this.setState({
-                quoteList: quoteList,
-                answerList: answerList,
-                imageList: imageList
+                gameInstance: gameInstance
             });
             console.log(this.state)
         }else{
