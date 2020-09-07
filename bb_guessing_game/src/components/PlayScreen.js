@@ -5,6 +5,7 @@ import Answer from './Answer';
 import ImageContainer from './ImageContainer';
 import Header from './Header';
 import Loading from './Loading';
+import Timer from './Timer';
 
 import getQuote from '../helpers/getQuote';
 import getAnswers from '../helpers/getAnswers';
@@ -20,7 +21,9 @@ class PlayScreen extends React.Component{
             gameInstance: [],
             userCorrectAnswers : [],
             loadComplete: false,
-            currentScore: 0
+            currentScore: 0,
+            answerTime: 10,
+            waitBetweenQuestions: false
         }
     }
 
@@ -39,7 +42,7 @@ class PlayScreen extends React.Component{
                 return{
                     gameInstance: output,
                     loadComplete: true,
-                    currentScore: 0
+                    currentScore: 0,
                 }
             })
         }, 500)
@@ -125,7 +128,7 @@ class PlayScreen extends React.Component{
             <div className="play-screen-container">
                 <Header score={this.state.currentScore} />
                 <div className='image-container'>
-                    {this.renderImage()}
+                    {this.inBetweenQuestions()}  
                 </div>
                 <div className='quote-container'>
                     {this.renderQuote()}
@@ -144,6 +147,16 @@ class PlayScreen extends React.Component{
             )
         }
     }
+// TODO wait 2 seconds before moving to next question, add css for correct/incorrect answer, render image during time
+    inBetweenQuestions(){
+        const {waitBetweenQuestions} = this.state;
+
+        if(waitBetweenQuestions){
+            return this.renderImage()
+        }else{
+            return <Timer answerTime={this.state.answerTime} didUserAnswerQuestion={this.didUserAnswerQuestion} />
+        }
+    }
 
     checkIfAnswerIsCorrect = (answer) =>{
         if(answer){
@@ -152,9 +165,10 @@ class PlayScreen extends React.Component{
             this.updateScore(0);
         }
         this.setState(prevState => ({
-            userCorrectAnswers: [...prevState.userCorrectAnswers, answer]
+            userCorrectAnswers: [...prevState.userCorrectAnswers, answer],
+            waitBetweenQuestions: true
           }));
-          this.moveToNextQuestion()
+          this.inBetweenQuestions();
     }
 
     // Removes first vale from lists, 
@@ -165,7 +179,7 @@ class PlayScreen extends React.Component{
 
         if(gameInstance[0] !== undefined){
             this.setState({
-                gameInstance: gameInstance
+                gameInstance: gameInstance,
             });
             console.log(this.state)
         }else{
@@ -178,6 +192,12 @@ class PlayScreen extends React.Component{
         this.setState({
             currentScore: currScore
          })
+    }
+
+    didUserAnswerQuestion = (response) => {
+        if(!response){
+            this.checkIfAnswerIsCorrect(false)
+        }
     }
 
     deactivateScreen(){
