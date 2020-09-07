@@ -1,36 +1,51 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 
 import '../styles/Timer.scss';
 
-function Timer(props){
+class Timer extends React.Component{
 
-    const [time, setTime] = useState(props.answerTime);
-
-    // Start timer on mount
-    useEffect(()=>{
-        let t = time;
-        const timer = setInterval(() => {
-            if(t <= 1){
-                clearInterval(timer);
-                timerExpired();
-            }
-            t -= 1;
-            setTime(t)
-        }, 1000);
-        // cleanup if answer was slected before timer finished
-        return () => {
-            clearInterval(timer);
-          };
-    },[])
+    constructor(props){
+        super(props);
+        this.state = {
+            timeLeft: props.answerTime,
+            timer : null
+        }
+    }
 
 
-    function timerExpired(){
-        props.didUserAnswerQuestion(false);
+    componentDidMount(){
+        // used to check mount status, fixed bug with updating state after unmounting
+        this._ismounted = true;
+        const timer = setInterval(() => { this.countDown() }, 1000);
+        this.setState({timer: timer});
+    }
+
+    componentWillUnmount(){
+        this._ismounted = false;
+        clearInterval(this.state.timer)
+    }
+
+    countDown(){
+        let {timeLeft} = this.state;
+        if(timeLeft < 1){
+            clearInterval(this.state.timer);
+            this.timerExpired();
+        }
+
+        timeLeft-= 1;
+
+        if(this._ismounted){
+            this.setState({timeLeft: timeLeft})
+        }
+    }
+
+    timerExpired(){
+        this.props.didUserAnswerQuestion(false);
         console.log('expired')
     }
 
 
-    function generateTimer(){
+    generateTimer(){
         return(
             <div className="base-timer">
                 <svg className="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -39,18 +54,19 @@ function Timer(props){
                     </g>
                 </svg>
                 <span id="base-timer-label" className="base-timer__label">   
-                {time}               
+                {this.state.timeLeft}               
                 </span>
             </div>
         )
     }
 
-
-    return(
-        <div>
-            {generateTimer()}
-        </div>
-    )
+    render(){
+        return(
+            <div>
+                {this.generateTimer()}
+            </div>
+        )
+    }
 }
 
 export default Timer;

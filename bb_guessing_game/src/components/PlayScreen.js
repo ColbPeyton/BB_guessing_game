@@ -22,7 +22,7 @@ class PlayScreen extends React.Component{
             userCorrectAnswers : [],
             loadComplete: false,
             currentScore: 0,
-            answerTime: 10,
+            answerTime: 5,
             waitBetweenQuestions: false
         }
     }
