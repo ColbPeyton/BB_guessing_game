@@ -22,15 +22,16 @@ class PlayScreen extends React.Component{
             userCorrectAnswers : [],
             loadComplete: false,
             currentScore: 0,
-            answerTime: 5,
-            waitBetweenQuestions: false
+            answerTime: 10,
+            isBetweenQuestions: false,
+            numberOfQuestions: 5,
+            currentScoreOutput: null
         }
     }
 
     async componentDidMount(){
-        let numberOfQuestions = 5;
 
-        const answerList = await getCharacters.getAmountOfCharacters(numberOfQuestions);
+        const answerList = await getCharacters.getAmountOfCharacters(this.state.numberOfQuestions);
         const quoteList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getQuote.getQuote), 'quote', 'author');
         const imageList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getImage.getImage), 'img', 'name');
 
@@ -43,6 +44,7 @@ class PlayScreen extends React.Component{
                     gameInstance: output,
                     loadComplete: true,
                     currentScore: 0,
+                    currentScoreOutput: `${0}/${this.state.numberOfQuestions}`
                 }
             })
         }, 500)
@@ -126,7 +128,7 @@ class PlayScreen extends React.Component{
         if(loadComplete){
             return(
             <div className="play-screen-container">
-                <Header score={this.state.currentScore} />
+                <Header score={this.state.currentScoreOutput} />
                 <div className='image-container'>
                     {this.inBetweenQuestions()}  
                 </div>
@@ -141,34 +143,45 @@ class PlayScreen extends React.Component{
         }else{
             return(
                 <div className="play-screen-container">
-                    <Header score={this.state.currentScore} />
+                    <Header score={this.state.currentScoreOutput} />
                     <Loading />
                 </div>
             )
         }
     }
+
+
 // TODO wait 2 seconds before moving to next question, add css for correct/incorrect answer, render image during time
     inBetweenQuestions(){
-        const {waitBetweenQuestions} = this.state;
+        const {isBetweenQuestions} = this.state;
 
-        if(waitBetweenQuestions){
+        if(isBetweenQuestions){
             return this.renderImage()
         }else{
             return <Timer answerTime={this.state.answerTime} didUserAnswerQuestion={this.didUserAnswerQuestion} />
         }
     }
 
+    waitBetweenQuestions(delay){
+        setTimeout(()=> {
+            this.setState({isBetweenQuestions: false})
+            this.moveToNextQuestion();
+        }, delay)
+    }
+
+    
+
     checkIfAnswerIsCorrect = (answer) =>{
         if(answer){
-            this.updateScore(10);
+            this.updateScore(1);
         }else{
             this.updateScore(0);
         }
         this.setState(prevState => ({
             userCorrectAnswers: [...prevState.userCorrectAnswers, answer],
-            waitBetweenQuestions: true
+            isBetweenQuestions: true
           }));
-          this.inBetweenQuestions();
+          this.waitBetweenQuestions(3000);
     }
 
     // Removes first vale from lists, 
@@ -181,7 +194,6 @@ class PlayScreen extends React.Component{
             this.setState({
                 gameInstance: gameInstance,
             });
-            console.log(this.state)
         }else{
             this.deactivateScreen()
         }
@@ -190,6 +202,7 @@ class PlayScreen extends React.Component{
     updateScore = (points) =>{
         let currScore = this.state.currentScore + points
         this.setState({
+            currentScoreOutput: `${currScore}/${this.state.numberOfQuestions}`,
             currentScore: currScore
          })
     }

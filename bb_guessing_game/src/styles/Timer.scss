@@ -1,8 +1,14 @@
+@import './colors';
+
+
+// From https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
+
 /* Sets the containers height and width */
 .base-timer {
+    margin: 0 auto;
     position: relative;
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
   }
   
   /* Removes SVG styling that would hide the time label */
@@ -21,8 +27,8 @@
     position: absolute;
     
     /* Size should match the parent container */
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     
     /* Keep the label aligned to the top */
     top: 0;
@@ -35,3 +41,89 @@
     /* Sort of an arbitrary number; adjust to your liking */
     font-size: 48px;
   }
+
+
+  .base-timer__path-remaining {
+    /* Just as thick as the original ring */
+    stroke-width: 7px;
+  
+    /* Rounds the line endings to create a seamless circle */
+    stroke-linecap: round;
+  
+    /* Makes sure the animation starts at the top of the circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+  
+    /* One second aligns with the speed of the countdown timer */
+    transition: 1s linear all;
+  
+    /* Allows the ring to change color when the color value updates */
+    stroke: currentColor;
+  }
+  
+  .base-timer__svg {
+    /* Flips the svg and makes the animation to move left-to-right */
+    transform: scaleX(-1);
+  }
+
+
+
+
+  
+
+  .inner-circle{
+    z-index: 2;
+
+    /* Makes sure the animation starts at the top of the circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+  
+    /* One second aligns with the speed of the countdown timer */
+    transition: 0.5s linear all;
+  
+    /* Allows the ring to change color when the color value updates */
+    stroke: currentColor;
+
+
+    stroke-dasharray: 283px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 7px;
+    fill: none;
+    animation: countdown 11s linear infinite forwards;
+  }
+
+  
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 283px;
+    }
+  }
+
+
+
+
+
+
+
+//   Colors 
+.green{
+    stroke: $primary-green-light;
+}
+
+
+.yellow{
+  stroke: $primary-yellow;
+}
+
+.red{
+  stroke: red;
+}
+
+.blue{
+    stroke: $primary-blue;
+}
