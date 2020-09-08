@@ -4,7 +4,7 @@ import '../styles/Answer.scss';
 function Answer(props){
 
     function handleClick(){
-        props.returnUserChoice(props.answer.correct)
+        if(!props.disabled) props.returnUserChoice(props.answer.correct)
     }
 
     return(

@@ -26,7 +26,7 @@ class PlayScreen extends React.Component{
             isBetweenQuestions: false,
             numberOfQuestions: 5,
             currentScoreOutput: null,
-            roundNumber: 1
+            roundNumber: 1,
         }
     }
 
@@ -38,6 +38,13 @@ class PlayScreen extends React.Component{
 
 
         const output = this.filterMultiDataIntoSingleObject(quoteList, imageList)
+
+        const answers = [];
+        output.forEach(el => {
+            answers.push(this.generateAnswerList(el.name));
+        })
+
+        output.allAnswers = answers;
         
         setTimeout(()=>{
             this.setState(()=>{
@@ -45,7 +52,7 @@ class PlayScreen extends React.Component{
                     gameInstance: output,
                     loadComplete: true,
                     currentScore: 0,
-                    currentScoreOutput: `${0}/${this.state.numberOfQuestions}`
+                    currentScoreOutput: `${0}/${this.state.numberOfQuestions}`,
                 }
             })
         }, 500)
@@ -92,23 +99,28 @@ class PlayScreen extends React.Component{
     }
     
 
-    // Based on first value in answer list, generate wrong answer list
-    generateAnswerList = () =>{
-        const {gameInstance} = this.state;
-        const currentAnswer = gameInstance[0].name;
+    // Based on name, generate wrong answer list
+    generateAnswerList = (name) =>{
+        const currentAnswer = name;
         return getAnswers(currentAnswer);
-
     }
 
     // TODO fix issue with answer list reloading between rounds. 
     renderAnswerList = () =>{
-        const {loadComplete, numberOfQuestions, roundNumber} = this.state;
-        const list = this.generateAnswerList();
-
+        const {loadComplete, numberOfQuestions, roundNumber, gameInstance, isBetweenQuestions} = this.state;
+        const list = gameInstance.allAnswers[0];
         return loadComplete && roundNumber <= numberOfQuestions
-        ? list.map((answer,index)=> <Answer answer={answer} key={index} returnUserChoice={this.checkIfAnswerIsCorrect}/>)
+        ? list.map((answer,index)=> <Answer answer={answer} key={index} returnUserChoice={this.checkIfAnswerIsCorrect} disabled={isBetweenQuestions}/>)
         : '';
     }
+
+    // renderPreviousAnswers = () =>{
+    //     const {allAnswers} = this.state;
+        
+    // }
+    // setPreviousAnswers = (arr) =>{
+    //     this.setState({allAnswers: arr});
+    // }
 
     renderQuote = () =>{
         const{gameInstance, roundNumber, numberOfQuestions} = this.state;
@@ -153,7 +165,7 @@ class PlayScreen extends React.Component{
     }
 
 
-// TODO wait 2 seconds before moving to next question, add css for correct/incorrect answer, render image during time
+// TODO wait 2 add css for correct/incorrect answer
     inBetweenQuestions(){
         const {isBetweenQuestions, roundNumber, numberOfQuestions} = this.state;
 
@@ -188,11 +200,12 @@ class PlayScreen extends React.Component{
           this.waitBetweenQuestions(3000);
     }
 
-    // Removes first vale from lists, 
+    // Removes first value from arrays, 
     moveToNextQuestion = () =>{
         const {gameInstance} = this.state;
 
         gameInstance.shift();
+        gameInstance.allAnswers.shift();
 
         if(gameInstance[0] !== undefined){
             this.setState({
@@ -226,9 +239,7 @@ class PlayScreen extends React.Component{
 
         if(currentScore === numberOfQuestions){
             score = 'perfect';
-        }
-
-        if(currentScore >= (numberOfQuestions / 2)){
+        }else if(currentScore >= (numberOfQuestions / 2)){
             score = 'good'
         }
 

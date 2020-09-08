@@ -12,11 +12,11 @@ function EndScreen(props){
     function chooseGifForDisplay(){
         switch(props.score){
             case 'perfect':
-                return <img src={endGifs[1]} alt= {'Perfect'} />
+                return <img src={endGifs[0]} alt= {'Perfect'} />
             case 'good':
-                return <img src={endGifs[2]} alt= {'Good'} />
+                return <img src={endGifs[1]} alt= {'Good'} />
             case 'bad':
-                return <img src={endGifs[3]} alt= {'Bad'} />
+                return <img src={endGifs[2]} alt= {'Bad'} />
             default:
                 return <ImageContainer image={{src: logo, alt: 'Breaking Bad Logo'}} />
         }
