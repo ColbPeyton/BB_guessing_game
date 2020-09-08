@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useRef} from 'react';
 import TitleScreen from './components/TitleScreen';
 import PlayScreen from './components/PlayScreen';
 import EndScreen from './components/EndScreen';
@@ -8,8 +8,12 @@ function App() {
   const [titleActive, setTitleActive] = useState(false);
   const [playActive, setPlayActive] = useState(true);
   const [endActive, setEndActive] = useState(false);
+  let score = useRef(0)
+  let output = useRef('');
 
-  const disableScreen = (screen) => {
+  const disableScreen = (screen, userScore = 0, scoreDisplay) => {
+    score.current = userScore;
+    output.current = scoreDisplay;
     switch(screen){
       case 'title':
         setTitleActive(false)
@@ -37,7 +41,7 @@ function App() {
     }else if(playActive){
       activeScreen = <PlayScreen updateActive={disableScreen}/>
     }else{
-      activeScreen = <EndScreen updateActive={playAgain}/>
+      activeScreen = <EndScreen updateActive={playAgain} score={score.current} output={output}/>
     }
     return activeScreen;
   }

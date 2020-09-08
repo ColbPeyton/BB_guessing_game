@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from './Header';
+import ImageContainer from './ImageContainer';
 import logo from '../images/bb_logo.png';
+const endGifs = require('../__data__/endData');
 
 function EndScreen(props){
 
@@ -8,12 +9,25 @@ function EndScreen(props){
         props.updateActive('title');
     }
 
+    function chooseGifForDisplay(){
+        switch(props.score){
+            case 'perfect':
+                return <img src={endGifs[1]} alt= {'Perfect'} />
+            case 'good':
+                return <img src={endGifs[2]} alt= {'Good'} />
+            case 'bad':
+                return <img src={endGifs[3]} alt= {'Bad'} />
+            default:
+                return <ImageContainer image={{src: logo, alt: 'Breaking Bad Logo'}} />
+        }
+    }
+
     return(
         <div className='title-screen-container'>
             <div className='title-screen-logo'>
-                <Header image={{src: logo, alt: 'Breaking Bad Logo'}}/>
+                {chooseGifForDisplay()}
             </div>
-            <h2>End</h2>
+            <h2>{props.output.current}</h2>
             <button className='.btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
         </div>
     )

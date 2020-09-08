@@ -25,7 +25,8 @@ class PlayScreen extends React.Component{
             answerTime: 10,
             isBetweenQuestions: false,
             numberOfQuestions: 5,
-            currentScoreOutput: null
+            currentScoreOutput: null,
+            roundNumber: 1
         }
     }
 
@@ -99,25 +100,26 @@ class PlayScreen extends React.Component{
 
     }
 
+    // TODO fix issue with answer list reloading between rounds. 
     renderAnswerList = () =>{
-        const {loadComplete} = this.state;
+        const {loadComplete, numberOfQuestions, roundNumber} = this.state;
         const list = this.generateAnswerList();
 
-        return loadComplete
+        return loadComplete && roundNumber <= numberOfQuestions
         ? list.map((answer,index)=> <Answer answer={answer} key={index} returnUserChoice={this.checkIfAnswerIsCorrect}/>)
         : '';
     }
 
     renderQuote = () =>{
-        const {gameInstance} = this.state;
-        return gameInstance[0]
+        const{gameInstance, roundNumber, numberOfQuestions} = this.state;
+        return gameInstance[0] && roundNumber <= numberOfQuestions
         ? <Quote quote={gameInstance[0].quote}/>
         : '';
     }
 
     renderImage = () => {
-        const{gameInstance} = this.state;
-        return gameInstance[0]
+        const{gameInstance, roundNumber, numberOfQuestions} = this.state;
+        return gameInstance[0] && roundNumber <= numberOfQuestions
         ? <ImageContainer image={{src: gameInstance[0].img, alt: gameInstance[0].name}}/>
         : ''
 
@@ -153,18 +155,20 @@ class PlayScreen extends React.Component{
 
 // TODO wait 2 seconds before moving to next question, add css for correct/incorrect answer, render image during time
     inBetweenQuestions(){
-        const {isBetweenQuestions} = this.state;
+        const {isBetweenQuestions, roundNumber, numberOfQuestions} = this.state;
 
         if(isBetweenQuestions){
             return this.renderImage()
         }else{
-            return <Timer answerTime={this.state.answerTime} didUserAnswerQuestion={this.didUserAnswerQuestion} />
+            return roundNumber <= numberOfQuestions
+            ? <Timer answerTime={this.state.answerTime} didUserAnswerQuestion={this.didUserAnswerQuestion} />
+            :''
         }
     }
 
     waitBetweenQuestions(delay){
         setTimeout(()=> {
-            this.setState({isBetweenQuestions: false})
+            this.setState({isBetweenQuestions: false, roundNumber: this.state.roundNumber + 1})
             this.moveToNextQuestion();
         }, delay)
     }
@@ -179,7 +183,7 @@ class PlayScreen extends React.Component{
         }
         this.setState(prevState => ({
             userCorrectAnswers: [...prevState.userCorrectAnswers, answer],
-            isBetweenQuestions: true
+            isBetweenQuestions: true,
           }));
           this.waitBetweenQuestions(3000);
     }
@@ -195,7 +199,9 @@ class PlayScreen extends React.Component{
                 gameInstance: gameInstance,
             });
         }else{
-            this.deactivateScreen()
+            setTimeout(() =>{
+                this.deactivateScreen()
+            }, 1000)
         }
     }
 
@@ -213,8 +219,25 @@ class PlayScreen extends React.Component{
         }
     }
 
+    configScoreForEndScreen = () =>{
+        const{currentScore, numberOfQuestions} = this.state;
+
+        let score = 'bad';
+
+        if(currentScore === numberOfQuestions){
+            score = 'perfect';
+        }
+
+        if(currentScore >= (numberOfQuestions / 2)){
+            score = 'good'
+        }
+
+        return score
+        
+    }
+
     deactivateScreen(){
-        this.props.updateActive('play');
+        this.props.updateActive('play', this.configScoreForEndScreen(), this.state.currentScoreOutput);
     }
 
 
