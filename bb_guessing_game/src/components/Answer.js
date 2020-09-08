@@ -7,8 +7,17 @@ function Answer(props){
         if(!props.disabled) props.returnUserChoice(props.answer.correct)
     }
 
+    function addClassStyling(){
+        if(props.disabled){
+            return props.answer.correct
+            ? 'correct'
+            : 'incorrect';
+        }
+        return '';
+        }
+
     return(
-        <div className='answer-button' onClick={()=>{handleClick()}}>
+        <div className={`answer-button ${addClassStyling() }`} onClick={()=>{handleClick()}}>
           <p>{props.answer.name}</p>
         </div>
     )

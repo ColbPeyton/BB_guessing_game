@@ -235,12 +235,16 @@ class PlayScreen extends React.Component{
     configScoreForEndScreen = () =>{
         const{currentScore, numberOfQuestions} = this.state;
 
-        let score = 'bad';
+        let score = 'okay';
 
+        if(currentScore >= (numberOfQuestions / 2)){
+            score = 'good'
+        }
         if(currentScore === numberOfQuestions){
             score = 'perfect';
-        }else if(currentScore >= (numberOfQuestions / 2)){
-            score = 'good'
+        } 
+        if(currentScore === 0){
+            score = 'bad'
         }
 
         return score

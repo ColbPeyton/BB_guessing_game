@@ -15,8 +15,10 @@ function EndScreen(props){
                 return <img src={endGifs[0]} alt= {'Perfect'} />
             case 'good':
                 return <img src={endGifs[1]} alt= {'Good'} />
+            case 'okay':
+                return <img src={endGifs[2]} alt= {'Okay'} />
             case 'bad':
-                return <img src={endGifs[2]} alt= {'Bad'} />
+                return <img src={endGifs[3]} alt= {'Bad'} />
             default:
                 return <ImageContainer image={{src: logo, alt: 'Breaking Bad Logo'}} />
         }
