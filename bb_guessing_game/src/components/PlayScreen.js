@@ -6,6 +6,7 @@ import ImageContainer from './ImageContainer';
 import Header from './Header';
 import Loading from './Loading';
 import Timer from './Timer';
+import AnswerStatus from './AnswerStatus';
 
 import getQuote from '../helpers/getQuote';
 import getAnswers from '../helpers/getAnswers';
@@ -105,7 +106,6 @@ class PlayScreen extends React.Component{
         return getAnswers(currentAnswer);
     }
 
-    // TODO fix issue with answer list reloading between rounds. 
     renderAnswerList = () =>{
         const {loadComplete, numberOfQuestions, roundNumber, gameInstance, isBetweenQuestions} = this.state;
         const list = gameInstance.allAnswers[0];
@@ -114,14 +114,6 @@ class PlayScreen extends React.Component{
         : '';
     }
 
-    // renderPreviousAnswers = () =>{
-    //     const {allAnswers} = this.state;
-        
-    // }
-    // setPreviousAnswers = (arr) =>{
-    //     this.setState({allAnswers: arr});
-    // }
-
     renderQuote = () =>{
         const{gameInstance, roundNumber, numberOfQuestions} = this.state;
         return gameInstance[0] && roundNumber <= numberOfQuestions
@@ -129,10 +121,18 @@ class PlayScreen extends React.Component{
         : '';
     }
 
+    renderAnswerStatus = () => {
+        const{userCorrectAnswers, roundNumber} = this.state; 
+        return <AnswerStatus status={userCorrectAnswers[roundNumber - 1]} />
+    }
+
     renderImage = () => {
         const{gameInstance, roundNumber, numberOfQuestions} = this.state;
         return gameInstance[0] && roundNumber <= numberOfQuestions
-        ? <ImageContainer image={{src: gameInstance[0].img, alt: gameInstance[0].name}}/>
+        ?   <div>
+                <ImageContainer image={{src: gameInstance[0].img, alt: gameInstance[0].name}}/>
+                {this.renderAnswerStatus()}
+            </div>
         : ''
 
     }

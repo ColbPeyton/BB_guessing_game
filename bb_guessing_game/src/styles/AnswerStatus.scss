@@ -1,0 +1,37 @@
+@import './colors';
+
+
+.answer-status-container{
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 175px;
+    height: 50px;
+    border: 3px solid;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideAcross 2s ease-in-out forwards;
+    font-size: 2rem;
+
+    &.correct{
+        border-color: $primary-green-light;
+        background: #29773e5e;
+        color: $primary-green-light;
+    }
+
+    &.incorrect{
+        border-color: red;
+        background: rgba(255, 0, 0, 0.418);
+        color: red;
+    }
+}
+
+
+@keyframes slideAcross{
+        0% { left: -100%; }
+        45% { left: 30%; }
+        65% { left: 30%; }
+        100% { left: 100%; }
+}

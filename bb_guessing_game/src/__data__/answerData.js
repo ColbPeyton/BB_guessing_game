@@ -3,9 +3,9 @@ const possibleAnswers = [
     "Skyler White",
     "Jesse Pinkman",
     "Saul Goodman",
-    "Gustavo Fring",
+    "Gus Fring",
     "Mike Ehrmantraut",
-    "Henry Schrader",
+    "Hank Schrader",
     "Hector Salamanca"
 ]
 
