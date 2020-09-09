@@ -1,0 +1,18 @@
+.end-screen-container{
+    width: 100vw;
+    height: 100vh;
+    background: red;
+    &.end-screen-img{
+        width: 500px;
+        height: auto;
+        background: blue;
+        &img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &.end-screen-message{
+
+    }
+}

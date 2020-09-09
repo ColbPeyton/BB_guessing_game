@@ -1,6 +1,9 @@
 import React from 'react';
 import ImageContainer from './ImageContainer';
 import logo from '../images/bb_logo.png';
+
+import '../styles/EndScreen.scss';
+
 const endGifs = require('../__data__/endData');
 
 function EndScreen(props){
@@ -25,11 +28,15 @@ function EndScreen(props){
     }
 
     return(
-        <div className='title-screen-container'>
-            <div className='title-screen-logo'>
+        <div className='end-screen-container'>
+            <div className='end-screen-img'>
                 {chooseGifForDisplay()}
             </div>
-            <h2>{props.output.current}</h2>
+            <div className='end-screen-message'>
+                <h3>You Answered</h3>
+                <h2>{props.output.current}</h2>
+                <h3>Answered Correctly</h3>
+            </div>
             <button className='.btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
         </div>
     )
