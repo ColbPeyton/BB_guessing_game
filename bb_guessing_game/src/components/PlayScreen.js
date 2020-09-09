@@ -23,9 +23,9 @@ class PlayScreen extends React.Component{
             userCorrectAnswers : [],
             loadComplete: false,
             currentScore: 0,
-            answerTime: 10,
+            answerTime: props.gameSettings[1].current,
             isBetweenQuestions: false,
-            numberOfQuestions: 5,
+            numberOfQuestions: props.gameSettings[0].current,
             currentScoreOutput: null,
             roundNumber: 1,
         }
@@ -165,7 +165,7 @@ class PlayScreen extends React.Component{
     }
 
 
-// TODO wait 2 add css for correct/incorrect answer
+// TODO send Answer time to modify speed of timer animation
     inBetweenQuestions(){
         const {isBetweenQuestions, roundNumber, numberOfQuestions} = this.state;
 

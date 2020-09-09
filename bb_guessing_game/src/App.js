@@ -5,9 +5,11 @@ import EndScreen from './components/EndScreen';
 import './styles/App.scss';
 
 function App() {
-  const [titleActive, setTitleActive] = useState(false);
+  const [titleActive, setTitleActive] = useState(true);
   const [playActive, setPlayActive] = useState(true);
   const [endActive, setEndActive] = useState(false);
+  let amountOfQuotes = useRef('5');
+  let difficulty = useRef('easy');
   let score = useRef(0)
   let output = useRef('');
 
@@ -25,6 +27,11 @@ function App() {
         setEndActive(false)
     }
   }
+
+  const getDifficultyAndQuote = (data) =>{
+    amountOfQuotes.current = data[0];
+    difficulty.current = data[1];
+  }
   
   // Disable end screen, reenable title/play. Title screen will be active screen 
   const playAgain = (screen) =>{
@@ -37,9 +44,9 @@ function App() {
     let activeScreen;
 
     if(titleActive){
-      activeScreen = <TitleScreen updateActive={disableScreen}/>
+      activeScreen = <TitleScreen updateActive={disableScreen} getDifficultyAndQuote={getDifficultyAndQuote}/>
     }else if(playActive){
-      activeScreen = <PlayScreen updateActive={disableScreen}/>
+      activeScreen = <PlayScreen updateActive={disableScreen} gameSettings={[amountOfQuotes, difficulty]}/>
     }else{
       activeScreen = <EndScreen updateActive={playAgain} score={score.current} output={output}/>
     }

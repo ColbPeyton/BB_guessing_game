@@ -1,5 +1,4 @@
 import React from 'react';
-import ImageContainer from './ImageContainer';
 import logo from '../images/bb_logo.png';
 
 import '../styles/EndScreen.scss';
@@ -23,21 +22,26 @@ function EndScreen(props){
             case 'bad':
                 return <img src={endGifs[3]} alt= {'Bad'} />
             default:
-                return <ImageContainer image={{src: logo, alt: 'Breaking Bad Logo'}} />
+                return <img src={endGifs[3]} alt= {'Bad'} />
         }
     }
 
     return(
         <div className='end-screen-container'>
-            <div className='end-screen-img'>
-                {chooseGifForDisplay()}
+            <div className='end-screen-logo'>
+                <img src= {logo} alt = 'Breaking Bad Logo'/>
             </div>
-            <div className='end-screen-message'>
-                <h3>You Answered</h3>
-                <h2>{props.output.current}</h2>
-                <h3>Answered Correctly</h3>
+            <div className='end-screen-content'>
+                <div className='end-screen-img'>
+                    {chooseGifForDisplay()}
+                </div>
+                <div className='end-screen-message'>
+                    <h3>You Answered</h3>
+                    <h2>{props.output.current}</h2>
+                    <h3>Correctly</h3>
+                </div>
             </div>
-            <button className='.btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
+            <button className='btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
         </div>
     )
 }
