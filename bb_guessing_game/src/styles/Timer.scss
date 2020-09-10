@@ -90,8 +90,24 @@
     stroke-linecap: round;
     stroke-width: 7px;
     fill: none;
-    animation: countdown 11s linear infinite forwards;
+
+
+    &.easy{
+      animation: countdown 21s linear infinite forwards;
+  
+    }
+    &.hard{
+      animation: countdown 6s linear infinite forwards;
+    }
+  
+    &.medium{
+      animation: countdown 11s linear infinite forwards;
+    }
+
+
   }
+
+
 
   
   

@@ -32,7 +32,7 @@ class PlayScreen extends React.Component{
     }
 
     async componentDidMount(){
-
+        console.log(this.props.gameSettings)
         const answerList = await getCharacters.getAmountOfCharacters(this.state.numberOfQuestions);
         const quoteList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getQuote.getQuote), 'quote', 'author');
         const imageList = this.modifyDataForState(await getQuote.getAmountOfData(answerList, getImage.getImage), 'img', 'name');

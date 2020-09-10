@@ -13,6 +13,7 @@ class Timer extends React.Component{
             color: 'green',
             halfTimeLeft: Math.floor(props.answerTime / 2),
             quaterTimeLeft: Math.floor(props.answerTime / 4),
+            animationClass: null
         }
     }
 
@@ -23,7 +24,7 @@ class Timer extends React.Component{
         const timer = setInterval(() => { this.countDown() }, 1000);
 
         this.setState(
-            {timer: timer});
+            {timer: timer, animationClass: this.chooseAnimation()});
     }
 
     componentWillUnmount(){
@@ -63,6 +64,17 @@ class Timer extends React.Component{
         return color;
     }
 
+    chooseAnimation(){
+        switch(this.state.totalTime){
+            case '5': 
+                return 'hard'
+            case '20': 
+                return 'easy';
+            default:
+                return 'medium'
+        }
+    }
+
     timerExpired(){
         this.props.didUserAnswerQuestion(false);
     }
@@ -84,7 +96,7 @@ class Timer extends React.Component{
                         a 45,45 0 1,0 -90,0
                         "
                     ></path>
-                    <circle className={`inner-circle ${this.state.color}`} cx="50" cy="50" r="45" />
+                    <circle className={`inner-circle ${this.state.color} ${this.state.animationClass}`} cx="50" cy="50" r="45" />
                     </g>
                 </svg>
                 <span id="base-timer-label" className="base-timer__label">   

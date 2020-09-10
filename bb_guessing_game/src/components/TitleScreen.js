@@ -6,7 +6,7 @@ import '../styles/TitleScreen.scss';
 function TitleScreen(props){
 
     const [quote, setQuotes] = useState(5);
-    const [difficulty, setDifficulty] = useState('easy');
+    const [difficulty, setDifficulty] = useState('20');
 
     function deactivateScreen(){
         props.updateActive('title');
