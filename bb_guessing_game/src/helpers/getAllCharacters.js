@@ -1,4 +1,9 @@
+import mostQuotes from '../__data__/mostQuoteCharacters';
+
 const invalid = require('../__data__/invalidCharacters');
+const mostQuote = require('../__data__/mostQuoteCharacters');
+const answers = require('./getAnswers');
+
 
 // Not all characters from API have quotes.
 // Pulling data from quote endpoint to get relevant characters
@@ -56,14 +61,21 @@ export function fixIssueWithAPINames(name){
 
 function generateRandomCharacterArray(amount, characterArr){
     const returnedCharacters = [];
+    const characters = characterArr;;
     for(let i = 0; i < amount; i++){
-        let random = Math.floor(Math.random() * characterArr.length);
-        returnedCharacters.push(characterArr[random]);
+        if(characters[i]){
+            returnedCharacters.push(characters[i]);
+        }else{
+            returnedCharacters.push(fillRemainderOfArray());
+        }
     }
-
-    return returnedCharacters;
+    return answers.shuffle(returnedCharacters);
 }
 
+function fillRemainderOfArray(){
+    const random = Math.floor(Math.random() * mostQuotes.length)
+    return mostQuotes[random];
+}
 
 export default {
     getAmountOfCharacters,

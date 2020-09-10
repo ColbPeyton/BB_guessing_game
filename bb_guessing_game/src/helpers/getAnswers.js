@@ -2,7 +2,7 @@ const possibleAnswers = require('../__data__/answerData');
 
 
 
-module.exports = function getAnswers(correctName){
+export function getAnswers(correctName){
     const returnedAnswers = [];
     const takenIndexPositions = [];
 
@@ -26,7 +26,7 @@ module.exports = function getAnswers(correctName){
             correct: false
         })
     }
-    return shuffleAnswers(returnedAnswers);
+    return shuffle(returnedAnswers);
 }
 
 //Return random number that has not been choosen previously.
@@ -48,7 +48,7 @@ function findAnswerLocationInArray(correctName){
 
 // Fisher-Yates shuffle
 // shuffle answers for output
-function shuffleAnswers(array) {
+export function shuffle(array) {
     let currentIndex = array.length;
     let temp; 
     let randomIndex;
@@ -68,3 +68,8 @@ function shuffleAnswers(array) {
   
     return array;
   }
+
+  export default {
+    shuffle,
+    getAnswers
+}

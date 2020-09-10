@@ -103,7 +103,7 @@ class PlayScreen extends React.Component{
     // Based on name, generate wrong answer list
     generateAnswerList = (name) =>{
         const currentAnswer = name;
-        return getAnswers(currentAnswer);
+        return getAnswers.getAnswers(currentAnswer);
     }
 
     renderAnswerList = () =>{

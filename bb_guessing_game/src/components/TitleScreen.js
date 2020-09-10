@@ -46,7 +46,7 @@ function TitleScreen(props){
                         <select value={quote} onChange={quoteChange}>
                             <option value="5">5 Quotes</option>
                             <option value="10">10 Quotes</option>
-                            <option value="20">20 Quotes</option>
+                            <option value="15">15 Quotes</option>
                         </select>
                 </div>
 
