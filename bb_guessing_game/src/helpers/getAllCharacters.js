@@ -1,7 +1,6 @@
 import mostQuotes from '../__data__/mostQuoteCharacters';
 
 const invalid = require('../__data__/invalidCharacters');
-const mostQuote = require('../__data__/mostQuoteCharacters');
 const answers = require('./getAnswers');
 
 
