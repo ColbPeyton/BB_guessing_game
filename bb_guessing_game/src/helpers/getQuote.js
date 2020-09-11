@@ -94,3 +94,7 @@ export default {
     getAmountOfData,
     getQuoteUpdated
 }
+
+
+
+

@@ -6,44 +6,44 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 
     .end-screen-logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        height: 20%;
+        height: 25%;
 
         img{
-            min-width: 200px;
-            max-width: 70%;
+            max-width: 85%;
             max-height: auto;
         }
     }
 
     .end-screen-content{
         width: 100%;
-        height: 400px;
+        height: 55%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-
+        justify-content: space-between;
         .end-screen-img{
+            height: 55%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60%;
-            width: 100%;
             img{
-                min-width: 300px;
                 max-width: 100%;
                 max-height: auto;
             }
         }
 
         .end-screen-message{
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             width: 100%;
-            height: 20%;
+            height: 35%;
             h2{
                 color: yellow;
             }
@@ -51,3 +51,117 @@
     }
 
 }
+
+
+
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) { 
+    .end-screen-container{
+        .end-screen-logo{
+            height: 25%;
+            img{
+                max-width: 55%;
+            }
+        }
+        .end-screen-content{
+            height: 50%;
+            .end-screen-img{
+                height: 60%;
+            }
+            .end-screen-message{
+                font-size: 6rem;
+            }
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) { 
+
+}
+
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) { 
+
+    .end-screen-container{
+        .end-screen-logo{
+            height: 25%;
+            img{
+                max-width: 60%;
+            }
+        }
+        .end-screen-content{
+            height: 55%;
+            .end-screen-img{
+                height: 60%;
+            }
+            .end-screen-message{
+                font-size: 2.25rem;
+            }
+        }
+    }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+    .end-screen-container{
+        .end-screen-logo{
+            height: 25%;
+            img{
+                max-width: 85%;
+            }
+        }
+    
+        .end-screen-content{
+            height: 55%;
+            padding-top: 1rem;
+            .end-screen-img{
+                height: 55%;
+                width: 100%;
+                img{
+                    max-width: 100%;
+                }
+            }
+    
+            .end-screen-message{
+                font-size: 1.6rem;
+                width: 100%;
+                height: 35%;
+            }
+        }
+    
+    }
+}
+
+
+// Very small devices
+@media (max-width: 350px) {
+    .end-screen-container{
+        height: 100vh;
+        .end-screen-logo{
+            img{
+                min-width: 250px;
+            }
+        }
+
+        .end-screen-content{
+            height: 50%;
+            .end-screen-img{
+            
+            }
+    
+            .end-screen-message{
+                font-size: 1.3rem;
+               
+            }
+        }
+    }
+}
+
