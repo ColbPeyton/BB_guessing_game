@@ -53,64 +53,51 @@
 }
 
 
-
-
-
-
-
-
-// Extra large devices (large desktops, 1200px and up)
-@media (max-width: 1200px) { 
+// Very small devices
+@media (min-width: 320px){
     .end-screen-container{
+        height: 100vh;
         .end-screen-logo{
-            height: 25%;
+            width: 100%;
+            height: 20%;
+    
             img{
-                max-width: 55%;
+                max-width: 75%;
             }
         }
+
         .end-screen-content{
+            margin-top: 1rem;
             height: 50%;
             .end-screen-img{
-                height: 60%;
+                img{
+                    max-height: 100%;
+                }
             }
+    
             .end-screen-message{
-                font-size: 6rem;
+                height: 35%;
+                font-size: 1.5rem;
+               
             }
         }
     }
 }
 
-// Large devices (desktops, 992px and up)
-@media (max-width: 992px) { 
-
-}
-
-
-// Medium devices (tablets, 768px and up)
-@media (max-width: 768px) { 
-
+@media (min-width: 374px){
     .end-screen-container{
-        .end-screen-logo{
-            height: 25%;
-            img{
-                max-width: 60%;
-            }
-        }
         .end-screen-content{
-            height: 55%;
-            .end-screen-img{
-                height: 60%;
-            }
             .end-screen-message{
-                font-size: 2.25rem;
+                height: 35%;
+                font-size: 1.75rem;
+            
             }
         }
     }
 }
-
 
 // Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) {
+@media (min-width: 480px) {
     .end-screen-container{
         .end-screen-logo{
             height: 25%;
@@ -123,10 +110,11 @@
             height: 55%;
             padding-top: 1rem;
             .end-screen-img{
-                height: 55%;
+                height: 50%;
                 width: 100%;
                 img{
-                    max-width: 100%;
+                    max-width: 90%;
+                    max-height: 90%;
                 }
             }
     
@@ -140,28 +128,115 @@
     }
 }
 
-
-// Very small devices
-@media (max-width: 350px) {
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
     .end-screen-container{
-        height: 100vh;
+        height: 90vh;
         .end-screen-logo{
+            height: 25%;
             img{
-                min-width: 250px;
+                max-width: 55%;
             }
         }
-
         .end-screen-content{
-            height: 50%;
+            height: 55%;
             .end-screen-img{
-            
+                height: 60%;
             }
-    
             .end-screen-message{
-                font-size: 1.3rem;
-               
+                font-size: 2rem;
             }
         }
     }
 }
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .end-screen-container{
+        margin-top: 2rem;
+        height: 75vh;
+        .end-screen-logo{
+            height: 20%;
+            img{
+                max-width: 50%;
+            }
+        }
+        .end-screen-content{
+            height: 50%;
+            padding-top: 0;
+            .end-screen-img{
+                height: 100%;
+                width: 100%;
+                img{
+                    max-width: 100%;
+                }
+            }
+    
+            .end-screen-message{
+                font-size: 2rem;
+                width: 100%;
+                height: 50%;
+                h2{
+                    color: yellow;
+                }
+            }
+        }
+    
+    }
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .end-screen-container{
+        margin-top: 2rem;
+        width: 100vw;
+        height: 80vh;
+    
+        .end-screen-logo{
+            width: 100%;
+            height: 25%;
+    
+            img{
+                max-width: 50%;
+                max-height: auto;
+            }
+        }
+    
+        .end-screen-content{
+            width: 100%;
+            height: 60%;
+            padding-top: 0;
+            .end-screen-img{
+                height: 50%;
+                width: 100%;
+                img{
+                    max-width: 100%;
+                    max-height: auto;
+                }
+            }
+    
+            .end-screen-message{
+                font-size: 2.75rem;
+                width: 100%;
+                height: 40%;
+                h2{
+                    color: yellow;
+                }
+            }
+        }
+    
+    }
+}
+
+
+
+
+
+
+
 
