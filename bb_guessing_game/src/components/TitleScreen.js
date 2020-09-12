@@ -49,8 +49,9 @@ function TitleScreen(props){
                             <option value="15">15 Quotes</option>
                         </select>
                 </div>
-
-                <button className='btn'>Play</button>
+                <div className='btn-container'>
+                    <button className='btn'>Play</button>
+                </div>
             </form>
         </div>
     )

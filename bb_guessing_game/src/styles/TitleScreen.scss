@@ -10,7 +10,7 @@
     align-items: center;
 
     .title-screen-logo{
-        height: 40%;
+        height: 30%;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -18,35 +18,181 @@
         align-items: center;
 
         img{
-            max-width: 80%;
+            max-width: 75%;
+            padding-bottom: 20px;
         }
     }
 
     .title-screen-form{
+        height: 50%;
         width: 100%;
-    }
-
-    .title-screen-form-difficulty{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
-
-        .title-screen-form-difficulty-options{
-            width: 50%;
+        flex-direction: column;
+        div{
+            height: 15%;
+            width: 100%;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
 
-            div{
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            label{
+                padding-right: 10px;
+            }
+        }
 
+        .btn-container{
+            padding-top: 3rem;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+
+@media (min-width: 374px){
+    .title-screen-container{
+        height: 95vh;
+        .title-screen-logo{
+            height: 25%;
+            img{
+                max-width: 70%;
+                padding-bottom: 40px;
+            }
+            h2{
+                font-size: 1.75rem;
+            }
+        }
+        .title-screen-form{
+            height: 40%;
+            div{
+                height: 15%;
+                width: 100%;
+                font-size: 1.15rem;
                 label{
-                    padding-left: 5px;
+                    padding-right: 10px;
                 }
+            }
+    
+            .btn-container{
+                padding-top: 2rem;
+                height: 50%;
             }
         }
     }
-
 }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 480px) {
+    .title-screen-container{
+        height: 95vh;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .title-screen-container{
+        height: 70vh;
+        .title-screen-logo{
+            height: 25%;
+            width: 100%;
+            img{
+                max-width: 40%;
+            }
+            h2{
+                font-size: 2.25rem;
+            }
+        }
+        .title-screen-form{
+            height: 35%;
+            div{
+                height: 25%;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .title-screen-container{
+        height: 60vh;
+        .title-screen-logo{
+            img{
+                max-width: 35%;
+            }
+            h2{
+                font-size: 2.50rem;
+            }
+        }
+        .title-screen-form{
+            height: 35%;
+            .btn-container{
+                padding-top: 2rem;
+                height: 50%;
+            }
+        }
+    }
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .title-screen-container{
+        height: 70vh;
+        .title-screen-form{
+            .btn-container{
+                padding-top: 1rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+// // Very small devices
+// @media (min-width: 320px){
+
+// }
+
+// @media (min-width: 374px){
+
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 480px) {
+
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) { 
+
+// }
+
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) { 
+
+// }
+
+
+
+
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { 
+  
+// }
