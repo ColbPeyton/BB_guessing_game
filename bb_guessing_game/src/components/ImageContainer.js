@@ -3,7 +3,7 @@ import '../styles/ImageContainer.scss';
 
 function ImageContainer(props){
     return(
-        <img src={props.image.src} alt={props.image.alt} />
+        <img className='loaded-img' src={props.image.src} alt={props.image.alt} />
     )
 }
 

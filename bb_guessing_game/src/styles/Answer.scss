@@ -1,34 +1,34 @@
 @import './colors';
 
 .answer-button{
-    padding: 1rem 0;
+    width: 100%;
+    padding: .55rem 0;
     background: $seconday-green-light;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 4px solid $secondary-green-dark;
-
 
     &.correct{
         background: #cfad02;
         font-weight: 500;
         animation: flash 1s ease-in-out infinite;
 
-        &:hover{
-            border-color:$secondary-green-dark;
-        }
+        // &:hover{
+        //     border-color:$secondary-green-dark;
+        // }
     }
 
     &.incorrect{
         background: rgba(0,0,0,0.5);
         z-index: 2;
 
-        &:hover{
-            border-color:$secondary-green-dark;
-        }
+        // &:hover{
+        //     border-color:$secondary-green-dark;
+        // }
     }
 
-    &:hover{
-        border-color:$primary-yellow;
-    }
+    // &:hover{
+    //     border-color:$primary-yellow;
+    // }
 }
 
 
@@ -36,4 +36,60 @@
     0%   {border-color: $primary-green-light}
     50%  {border-color: $secondary-green-dark}
     100% {border-color: $primary-green-light}
+}
+
+// Adds hover to screens without touch input
+@media (hover: hover) {
+    .answer-button{
+        &.correct{    
+            &:hover{
+                border-color:$secondary-green-dark;
+            }
+        }
+    
+        &.incorrect{    
+            &:hover{
+                border-color:$secondary-green-dark;
+            }
+        }
+        &:hover{
+            border-color:$primary-yellow;
+        }
+    }
+  }
+
+// Very small devices
+@media (min-width: 320px){
+
+}
+
+@media (min-width: 374px){
+    .answer-button{
+        padding: 0.9rem 0;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 480px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+
+}
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  
 }

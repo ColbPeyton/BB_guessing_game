@@ -16,10 +16,10 @@ function getImageFromAnotherSource(name){
     let url;
     switch(name){
         case 'Jesse Pinkman':
-            url = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Jesse_Pinkman_S5B.png/440px-Jesse_Pinkman_S5B.png';
+            url = 'https://upload.wikimedia.org/wikipedia/en/c/c6/Jesse_Pinkman_S5B.png';
             break;
         default:
-            url = 'https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Hank_Schrader_S5B.png/440px-Hank_Schrader_S5B.png';
+            url = 'https://vignette.wikia.nocookie.net/breakingbad/images/b/b7/HankS5.jpg/revision/latest?cb=20120620014136';
     }
     return [{name: name, img: url}]
 }

@@ -60,7 +60,7 @@
         .title-screen-logo{
             height: 25%;
             img{
-                max-width: 70%;
+                max-width: 85%;
                 padding-bottom: 40px;
             }
             h2{
@@ -96,19 +96,19 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
     .title-screen-container{
-        height: 70vh;
+        height: 50vh;
         .title-screen-logo{
-            height: 25%;
+            height: 45%;
             width: 100%;
             img{
-                max-width: 40%;
+                max-width: 55%;
             }
             h2{
                 font-size: 2.25rem;
             }
         }
         .title-screen-form{
-            height: 35%;
+            height: 25%;
             div{
                 height: 25%;
                 font-size: 1.5rem;
@@ -121,19 +121,19 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
     .title-screen-container{
-        height: 60vh;
+        height: 55vh;
         .title-screen-logo{
             img{
-                max-width: 35%;
+                max-width: 45%;
             }
             h2{
                 font-size: 2.50rem;
             }
         }
         .title-screen-form{
-            height: 35%;
+            height: 25%;
             .btn-container{
-                padding-top: 2rem;
+                padding-top: 3rem;
                 height: 50%;
             }
         }
@@ -147,10 +147,10 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { 
     .title-screen-container{
-        height: 70vh;
+        height: 55vh;
         .title-screen-form{
             .btn-container{
-                padding-top: 1rem;
+                padding-top: 3rem;
             }
         }
     }

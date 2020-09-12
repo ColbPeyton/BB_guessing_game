@@ -3,8 +3,11 @@
 
 .answer-status-container{
     position: absolute;
-    top: 50%;
-    left: -100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
     width: 175px;
     height: 50px;
     border: 3px solid;
@@ -12,26 +15,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: slideAcross 2s ease-in-out forwards;
+    animation: grow 2s ease-in-out forwards;
     font-size: 2rem;
 
     &.correct{
         border-color: $primary-green-light;
-        background: #29773e5e;
+        background: #29773e86;
         color: $primary-green-light;
     }
 
     &.incorrect{
         border-color: red;
-        background: rgba(255, 0, 0, 0.418);
+        background: rgba(255, 0, 0, 0.534);
         color: red;
     }
 }
 
 
-@keyframes slideAcross{
-        0% { left: -100%; }
-        45% { left: 30%; }
-        65% { left: 30%; }
-        100% { left: 100%; }
+@keyframes grow{
+        0% { transform: scale(0);}
+        45% { transform: scale(1);}
+        60% { transform: scale(1);}
+        100% { transform: scale(0); }
 }

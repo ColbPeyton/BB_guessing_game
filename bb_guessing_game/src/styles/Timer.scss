@@ -7,8 +7,8 @@
 .base-timer {
     margin: 0 auto;
     position: relative;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
   }
   
   /* Removes SVG styling that would hide the time label */
@@ -27,8 +27,8 @@
     position: absolute;
     
     /* Size should match the parent container */
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     
     /* Keep the label aligned to the top */
     top: 0;
@@ -142,4 +142,64 @@
 
 .blue{
     stroke: $primary-blue;
+}
+
+
+
+
+// Very small devices
+@media (min-width: 320px){
+
+
+}
+
+@media (min-width: 374px){
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 480px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+  .base-timer {
+    height: 300px;
+    width: 300px;
+  }
+
+  .base-timer__label {
+    width: 300px;
+    height: 300px;
+    font-size: 4rem;
+
+  }
+
+}
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+
+  // .base-timer {
+  //   height: 350px;
+  //   width: 350px;
+  // }
+
+  // .base-timer__label {
+  //   width: 350px;
+  //   height: 350px;
+  //   font-size: 4.5rem;
+
+  // }
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  
 }
