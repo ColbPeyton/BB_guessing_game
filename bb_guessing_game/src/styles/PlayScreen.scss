@@ -65,6 +65,30 @@
 
 }
 
+@media (max-width: 767px) and (orientation:landscape) {
+    .play-screen-container{
+        width: 80vw;
+        height: 100vh;
+        .image-container{
+            height: 50%;
+            max-height: 200px;
+        }
+    
+        .quote-container{
+            margin: 0 auto;
+            width: 80%;
+            height: 10%;
+            padding-bottom: 0px;
+        }
+        .answer-container{
+            flex-direction: row;
+            justify-content: space-around;
+            height: 20%;
+            width: 100%;
+        }
+    }
+}
+
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
     .play-screen-container{
@@ -89,6 +113,54 @@
         }
     }
 }
+
+@media (min-width: 768px) and (orientation:landscape) {
+    .play-screen-container{
+        height: 100vh;
+        width: 60vw;
+        .image-container{
+            height: 50%;
+            max-height: 300px;
+        }
+    
+        .quote-container{
+            width: 80%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .answer-container{
+            height: 25%;
+        }
+    }
+ }
+
+ @media (max-width: 812px) and (orientation:landscape) {
+
+    .play-screen-container{
+        width: 80vw;
+        height: 100vh;
+        .image-container{
+            height: 50%;
+            max-height: 200px;
+        }
+    
+        .quote-container{
+            margin: 0 auto;
+            width: 80%;
+            height: 10%;
+            padding-bottom: 0px;
+        }
+        .answer-container{
+            flex-direction: row;
+            justify-content: space-around;
+            height: 20%;
+            width: 100%;
+        }
+    }
+ }
 
 
 // Large devices (desktops, 992px and up)

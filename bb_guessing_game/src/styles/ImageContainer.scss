@@ -32,6 +32,21 @@
     }
 }
 
+@media (max-width: 767px) and (orientation:landscape) {
+    .loaded-img{
+        max-height: 150px ;
+    }
+}
+
+@media (max-width: 813px) and (orientation:landscape) {
+
+    .loaded-img{
+        max-height: 175px ;
+    }
+}
+
+
+
 // Medium devices (tablets, 768px and up)
 // @media (min-width: 768px) { 
 //     .loaded-img{

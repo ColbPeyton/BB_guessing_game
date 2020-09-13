@@ -6,3 +6,17 @@
     color: #fff;
     font-size: 1.1rem;
 }
+
+@media (max-width: 767px) and (orientation:landscape) {
+    .btn{
+        padding: 5px 30px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 812px) and (orientation:landscape) {
+    .btn{
+        padding: 5px 30px;
+        font-size: 0.75rem;
+    }
+}

@@ -56,6 +56,24 @@
 
 }
 
+@media (min-width: 480px) and (orientation:landscape) {
+    .header-container{
+        max-height: 25%;
+        min-height: 50px;
+    
+    
+        .logo{
+            font-size: 1rem;
+        }
+    
+        .score{
+            font-size: 1.15rem;
+    
+        }
+    }
+
+}
+
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
     .header-container{
@@ -71,20 +89,27 @@
         .score{
             font-weight: 300;
             font-size: 2rem;
-    
-            &.red{
-                color: red;
-            }
-            &.yellow{
-                color: $primary-yellow;
-            }
-            &.green{
-                color: $primary-green-light;
-            }
-    
         }
     }
     
+}
+
+@media (max-width: 813px) and (orientation:landscape) {
+    .header-container{
+        max-height: 25%;
+        min-height: 60px;
+    
+    
+        .logo{
+            font-size: 1.25rem;
+        }
+    
+        .score{
+            font-size: 1.5rem;
+    
+        }
+    }
+
 }
 
 

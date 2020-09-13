@@ -78,6 +78,14 @@
     }
 }
 
+@media (max-width: 767px) and (orientation:landscape) {
+    .answer-button{
+        padding: 0.3rem;
+        margin-right: 5px;
+        font-size: 0.6rem;
+    }
+}
+
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
 
