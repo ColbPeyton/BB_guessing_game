@@ -1,11 +1,11 @@
 .quote{
-    font-size: 1.15rem;
+    font-size: 1rem;
 }
 
 
 @media (min-width: 374px){
     .quote{
-        font-size: 1.25rem;
+        font-size: 1.35rem;
     }
     
 }
@@ -18,23 +18,24 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
     .quote{
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 }
 
 
-// Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
- 
-}
-
-
-
-
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
     .quote{
-        font-size: 2rem;
+        margin-top: 1rem;
     }
 }
+
+
+
+
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { 
+//     .quote{
+//         font-size: 2rem;
+//     }
+// }

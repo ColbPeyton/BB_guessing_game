@@ -17,10 +17,11 @@
     align-items: center;
     animation: grow 2s ease-in-out forwards;
     font-size: 2rem;
+    border-radius: 10px;
 
     &.correct{
         border-color: $primary-green-light;
-        background: #29773e86;
+        background: #29773ea4;
         color: $primary-green-light;
     }
 
@@ -38,3 +39,47 @@
         60% { transform: scale(1);}
         100% { transform: scale(0); }
 }
+
+
+
+
+@media (min-width: 374px){
+    .answer-status-container{
+        width: 200px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 480px) {
+    .answer-status-container{
+        width: 200px;
+        height: 50px;
+        font-size: 3rem;
+
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .answer-status-container{
+        width: 250px;
+        height: 75px;
+    }
+}
+
+
+@media (min-width: 992px) { 
+
+}
+
+
+
+
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { 
+//     .loaded-img{
+//         max-width: 35%;
+//         max-height: auto;
+//     }
+//}

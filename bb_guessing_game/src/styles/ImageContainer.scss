@@ -1,62 +1,58 @@
 .loaded-img{
     opacity: 0;
-    max-width: 45%;
-    max-height: auto;
-    animation: enter 0.5s ease-in forwards;
+    max-width: 100%;
+    height: auto;
+    animation: enter 3s ease-in-out forwards;
 }
 
 @keyframes enter{
     0%{ opacity: 0;}
-    25%{ opacity: 0.25;}
-    50%{ opacity: 0.5;}
-    75%{ opacity: 0.75;}
-    100%{ opacity: 1;}
-}
+    25%{ opacity: 1;}
+    50%{ opacity: 1;}
+    75%{ opacity: 1;}
+    100%{ opacity: 0;}}
 
 
 
-// Very small devices
 @media (min-width: 320px){
     .loaded-img{
-        max-width: 40%;
-        max-height: auto;
+      max-height:200px ;
     }
 }
 
 @media (min-width: 374px){
     .loaded-img{
-        max-height: 100%;
-        max-width: auto;
+        max-height: 225px ;
     }
 }
 
-// Small devices (landscape phones, 576px and up)
 @media (min-width: 480px) {
-
+    .loaded-img{
+        max-height: 250px ;
+    }
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
-
-}
-
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { 
-    .loaded-img{
-        max-width: 45%;
-        max-height: auto;
-    }
-}
+// @media (min-width: 768px) { 
+//     .loaded-img{
+//         max-height: 300px ;
+//     }
+// }
 
 
+// @media (min-width: 992px) { 
+//     .loaded-img{
+//         max-height: 250px;
+//     }
+// }
 
 
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
-    .loaded-img{
-        max-width: 35%;
-        max-height: auto;
-    }
-}
+
+
+// @media (min-width: 1200px) { 
+//     .loaded-img{
+//         max-height: 350px;
+
+//     }
+// }

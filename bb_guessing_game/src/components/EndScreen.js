@@ -30,6 +30,7 @@ function EndScreen(props){
         <div className='end-screen-container'>
             <div className='end-screen-logo'>
                 <img src= {logo} alt = 'Breaking Bad Logo'/>
+                <h2>Guess the Quote</h2>
             </div>
             <div className='end-screen-content'>
                 <div className='end-screen-img'>
@@ -41,7 +42,9 @@ function EndScreen(props){
                     <h3>Correctly</h3>
                 </div>
             </div>
-            <button className='btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
+            <div className='.btn-container'>
+                <button className='btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
+            </div>
         </div>
     )
 }

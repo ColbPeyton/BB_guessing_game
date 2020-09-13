@@ -2,46 +2,51 @@
 @import '../styles/button';
 
 .end-screen-container{
-    width: 100vw;
     height: 100vh;
+    width: 90vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 
     .end-screen-logo{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 35%;
         width: 100%;
-        height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
         img{
-            max-width: 85%;
-            max-height: auto;
+            max-width: 100%;
+            height: auto;
+            padding-bottom: 10px;
+        }
+        h2{
+            font-weight: 300;
         }
     }
 
     .end-screen-content{
         width: 100%;
-        height: 55%;
+        height: 50%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         .end-screen-img{
-            height: 55%;
+            height: 60%;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             img{
                 max-width: 100%;
-                max-height: auto;
+                height: auto;
             }
         }
 
         .end-screen-message{
-            font-size: 1.6rem;
+            font-size: 1.15rem;
             width: 100%;
             height: 35%;
             h2{
@@ -49,102 +54,108 @@
             }
         }
     }
-
 }
 
 
 // Very small devices
 @media (min-width: 320px){
-    .end-screen-container{
-        height: 100vh;
-        .end-screen-logo{
-            width: 100%;
-            height: 20%;
-    
-            img{
-                max-width: 75%;
-            }
-        }
 
-        .end-screen-content{
-            margin-top: 1rem;
-            height: 50%;
-            .end-screen-img{
-                img{
-                    max-height: 100%;
-                }
-            }
-    
-            .end-screen-message{
-                height: 35%;
-                font-size: 1.5rem;
-               
-            }
-        }
-    }
 }
 
 @media (min-width: 374px){
     .end-screen-container{
+        height: 100vh;
+        .end-screen-logo{
+            margin-top: 1rem;
+            justify-content: space-evenly;
+            height: 35%;
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+            h2{
+                font-weight: 300;
+                font-size: 1.6rem;
+            }
+        }
+    
         .end-screen-content{
+            height: 50%;
+            justify-content: space-around;
+            .end-screen-img{
+                height: 40%;
+                img{
+                    max-height: 150px;
+                }
+            }
+    
             .end-screen-message{
-                height: 35%;
-                font-size: 1.75rem;
-            
+                height: 30%;
+                font-size: 1.4rem;
             }
         }
     }
+    
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 480px) {
     .end-screen-container{
+        height: 100vh;
+        width: 50vw;
         .end-screen-logo{
+            margin-top: 2rem;
             height: 25%;
             img{
-                max-width: 85%;
+                max-width: 100%;
+                height: auto;
+            }
+            h2{
+                font-weight: 300;
+                font-size: 1.75rem;
             }
         }
     
         .end-screen-content{
-            height: 55%;
-            padding-top: 1rem;
+            height: 50%;
+            justify-content: space-around;
             .end-screen-img{
                 height: 50%;
-                width: 100%;
                 img{
-                    max-width: 90%;
-                    max-height: 90%;
+                    max-height: 150px;
                 }
             }
     
             .end-screen-message{
-                font-size: 1.6rem;
-                width: 100%;
-                height: 35%;
+                height: 30%;
+                font-size: 1.25rem;
             }
         }
-    
     }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
     .end-screen-container{
-        height: 90vh;
+        width: 35vw;
+        height: 100vh;
         .end-screen-logo{
+            margin-top: 0;
             height: 25%;
-            img{
-                max-width: 55%;
+            h2{
+                font-size: 2rem;
             }
         }
         .end-screen-content{
-            height: 55%;
+            height: 40%;
             .end-screen-img{
                 height: 60%;
+                img{
+                    max-height: 200px;
+                }
             }
             .end-screen-message{
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
         }
     }
@@ -154,37 +165,13 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
     .end-screen-container{
-        margin-top: 2rem;
-        height: 85vh;
-        width: 50vw;
-        .end-screen-logo{
-            height: 20%;
-            img{
-                max-width: 60%;
-            }
-        }
-        .end-screen-content{
-            height: 50%;
-            padding-top: 0;
-            
-            .end-screen-img{
-                height: 100%;
-                width: 100%;
-                img{
-                    max-width: 100%;
-                }
-            }
-    
+        width: 25vw;
+        height: 100vh;
+        .end-screen-content{ 
             .end-screen-message{
-                font-size: 2rem;
-                width: 100%;
-                height: 50%;
-                h2{
-                    color: yellow;
-                }
+                font-size: 1.5rem;
             }
         }
-    
     }
 }
 
@@ -195,45 +182,23 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { 
     .end-screen-container{
-        margin-top: 2rem;
-        width: 30vw;
-        height: 80vh;
-    
-        .end-screen-logo{
-            width: 100%;
-            height: 25%;
-    
-            img{
-                max-width: 75%;
-                max-height: auto;
-            }
-        }
-    
-        .end-screen-content{
-            width: 100%;
-            height: 60%;
-            padding-top: 0;
-            .end-screen-img{
-                height: 50%;
-                width: 100%;
-                img{
-                    max-width: 100%;
-                    max-height: auto;
-                }
-            }
-    
-            .end-screen-message{
-                font-size: 2.5rem;
-                width: 100%;
-                height: 40%;
-                h2{
-                    color: yellow;
-                }
-            }
-        }
-    
+        margin-top: 1rem;
+
+        width: 20vw;
+        height: 90vh;
+       
     }
 }
+
+
+@media (min-width: 2000px) { 
+    .end-screen-container{
+        width: 10vw;
+        height: 90vh;
+
+    }
+}
+
 
 
 

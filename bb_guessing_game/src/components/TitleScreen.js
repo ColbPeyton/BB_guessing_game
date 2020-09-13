@@ -6,7 +6,7 @@ import '../styles/TitleScreen.scss';
 function TitleScreen(props){
 
     const [quote, setQuotes] = useState(5);
-    const [difficulty, setDifficulty] = useState('20000');
+    const [difficulty, setDifficulty] = useState('20');
 
     function deactivateScreen(){
         props.updateActive('title');
@@ -30,7 +30,7 @@ function TitleScreen(props){
         <div className='title-screen-container'>
             <div className='title-screen-logo'>
                 <img src= {logo} alt='Breaking Bad Logo'/>
-                <h2>Guess The Quote</h2>
+                <h2>Guess the Quote</h2>
             </div>
             <form className='title-screen-form' onSubmit={handleSubmit}>
                 <div className='form-difficulty'>
