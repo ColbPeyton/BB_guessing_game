@@ -21,6 +21,7 @@ function App() {
         setTitleActive(false)
         break;
       case 'play':
+        if(!endActive)
         setPlayActive(false)
         break;
       default:
