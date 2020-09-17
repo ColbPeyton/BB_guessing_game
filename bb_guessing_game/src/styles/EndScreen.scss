@@ -4,10 +4,12 @@
 .end-screen-container{
     height: 100vh;
     width: 90vw;
+    max-height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    overflow: hidden;
 
     .end-screen-logo{
         height: 35%;
@@ -59,12 +61,18 @@
 
 // Very small devices
 @media (min-width: 320px){
-
+    .end-screen-container{
+        height: 100vh;
+        max-height: 450px;
+        min-height: 600px;
+    }
 }
 
 @media (min-width: 374px){
     .end-screen-container{
         height: 100vh;
+        max-height: 660px;
+        min-height: 600px;
         .end-screen-logo{
             margin-top: 1rem;
             justify-content: space-evenly;
@@ -101,6 +109,8 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 480px) {
     .end-screen-container{
+        max-height: 650px;
+        min-height: 600px;
         width: 50vw;
         .end-screen-logo{
             margin-top: 2rem;
@@ -129,13 +139,111 @@
         }
     }
 }
-
-@media (max-width: 767px) and (orientation:landscape) {
+@media (max-width: 569px) and (orientation:landscape) {
     .end-screen-container{
-        width: 25vw;
+        width: 50vw;
+        max-height: 350px;
+        min-height: 300px;
+    }
+
+}
+
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .end-screen-container{
+        height: 80vh;
+        width: 45vw;
+        max-height: 850px;
+        min-height: 800px;
+
+        .end-screen-logo{
+            height: 25%;
+            h2{
+                font-size: 2.25rem;
+            }
+        }
+        .end-screen-content{
+            height: 40%;
+            .end-screen-img{
+                height: 60%;
+                img{
+                    max-height: 200px;
+                }
+            }
+            .end-screen-message{
+                font-size: 1.75rem;
+            }
+        }
+    }
+}
+
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .end-screen-container{
+        margin-top: 1rem;
+        width: 30vw;
+        height: 80vh;
+        max-height: 800px;
+        min-height: 750px;
         .end-screen-logo{
             margin-top: 1rem;
-            height: 25%;
+        }
+        .end-screen-content{ 
+            .end-screen-message{
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .end-screen-container{
+        margin-top: 2rem;
+        max-height: 750px;
+        min-height: 700px;
+        width: 25vw;
+        height: 90vh;
+       
+    }
+}
+@media (min-width: 1400px) { 
+    .end-screen-container{
+        max-height: 850px;
+        min-height: 800px;
+    }
+}
+
+
+@media (min-width: 2000px) { 
+    .end-screen-container{
+        max-width: 500px;
+        max-height: 1000px;
+        max-height: 900px;
+        height: 90vh;
+
+    }
+}
+
+
+
+@media (max-width: 813px) and (max-height: 416px) and (orientation:landscape) {
+    .end-screen-container{
+        width: 22vw;
+        max-height: 450px;
+        min-height: 370px;
+        margin-top: 1rem;
+        .end-screen-logo{
+            margin-top: 0rem;
+            height: 20%;
             h2{
                 font-size: 1rem;
             }
@@ -159,97 +267,18 @@
     }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
+@media (max-width: 568px) and (max-height: 320px) and (orientation:landscape) {
     .end-screen-container{
-        height: 80vh;
-        width: 35vw;
-        .end-screen-logo{
-            height: 25%;
-            h2{
-                font-size: 2.25rem;
-            }
-        }
-        .end-screen-content{
-            height: 40%;
-            .end-screen-img{
-                height: 60%;
-                img{
-                    max-height: 200px;
-                }
-            }
-            .end-screen-message{
-                font-size: 1.75rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 812px) and (orientation:landscape) {
-    .end-screen-container{
-        width: 20vw;
-        .end-screen-logo{
-            margin-top: 1rem;
-            height: 25%;
-            h2{
-                font-size: 1rem;
-            }
-        }
-    
-        .end-screen-content{
-            height: 50%;
-            justify-content: space-evenly;
-            .end-screen-img{
-                height: 30%;
-            }
-    
-            .end-screen-message{
-                height: 15%;
-                font-size: 0.85rem;
-            }
-        }
-    }
-}
-
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { 
-    .end-screen-container{
-        width: 20vw;
-        height: 80vh;
-        .end-screen-logo{
-            margin-top: 1rem;
-        }
-        .end-screen-content{ 
-            .end-screen-message{
-                font-size: 1.5rem;
-            }
-        }
-    }
-}
-
-
-
-
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
-    .end-screen-container{
+        overflow: visable;
+        width: 25vw;
+        max-height: 300px;
+        min-height: 275px;
         margin-top: 1rem;
-        width: 20vw;
-        height: 90vh;
-       
     }
+
 }
 
 
-@media (min-width: 2000px) { 
-    .end-screen-container{
-        width: 10vw;
-        height: 90vh;
-
-    }
-}
 
 
 

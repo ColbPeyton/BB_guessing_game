@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-height: 700px;
 
     .image-container{
         height: 50%;
@@ -62,13 +63,13 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 480px) {
-
 }
 
 @media (max-width: 767px) and (orientation:landscape) {
     .play-screen-container{
         width: 80vw;
         height: 100vh;
+
         .image-container{
             height: 50%;
             max-height: 200px;
@@ -94,10 +95,12 @@
     .play-screen-container{
         height: 100vh;
         width: 70vw;
+        max-height: 650px;
+        min-height: 600px;
 
         .image-container{
             height: 50%;
-            max-height: 300px;
+            max-height: 400px;
         }
     
         .quote-container{
@@ -168,10 +171,12 @@
 
     .play-screen-container{
         height: 95vh;
+        max-height: 750px;
+        min-height: 700px;
         .image-container{
         }
         .answer-container{
-            height: 50%;
+            height: 40%;
             width: 50%;
         }
     }
@@ -184,6 +189,7 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { 
     .play-screen-container{
+        max-height: 700px;
         .image-container{
             height: 50%;
             max-height: 400px;
@@ -191,6 +197,22 @@
 
         .answer-container{
             height: 55%;
+        }
+    }
+}
+
+@media (min-width: 2000px) { 
+    .play-screen-container{
+        width: 50vw;
+        max-height: 800px;
+        .image-container{
+            height: 50%;
+            max-height: 400px;
+        }
+
+        .answer-container{
+            height: 55%;
+            width: 40%;
         }
     }
 }
