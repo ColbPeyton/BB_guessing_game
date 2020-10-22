@@ -32,8 +32,10 @@ function TitleScreen(props){
                 <img src= {logo} alt='Breaking Bad Logo'/>
                 <h2>Guess the Quote</h2>
             </div>
+
             <form className='title-screen-form' onSubmit={handleSubmit}>
-                <div className='form-difficulty'>
+            <div className='form-container'>
+                <div className='form-content'>
                     <label htmlFor="difficulty">Difficulty:</label>
                         <select value={difficulty} onChange={difficultyChange}>
                             <option value="20">Easy</option>
@@ -41,7 +43,7 @@ function TitleScreen(props){
                             <option value="5">Hard</option>
                         </select>
                 </div>
-                <div className='form-quotes'>
+                <div className='form-content'>
                     <label htmlFor="quotes">Quotes:</label>
                         <select value={quote} onChange={quoteChange}>
                             <option value="5">5 Quotes</option>
@@ -49,6 +51,7 @@ function TitleScreen(props){
                             <option value="15">15 Quotes</option>
                         </select>
                 </div>
+            </div>
                 <div className='btn-container'>
                     <button className='btn'>Play</button>
                 </div>
