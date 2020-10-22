@@ -300,8 +300,6 @@
         height: 100vh;
         max-height: 700px;
         min-height: 650px;
-        width: 75vw;
-        max-width: 500px;
     }
 }
 
@@ -309,26 +307,24 @@
 
 
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { 
-    .title-screen-container{
-        height: 100vh;
-        max-height: 700px;
-        min-height: 650px;
-        width: 75vw;
-        max-width: 500px;
-    }
-}
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { 
+//     .title-screen-container{
+//         height: 100vh;
+//         max-height: 700px;
+//         min-height: 650px;
+//     }
+// }
 
 
-@media (min-width: 2000px) { 
-    .title-screen-container{
-        height: 100vh;
-        max-height: 675px;
-        min-height: 625px;
-    }
+// @media (min-width: 2000px) { 
+//     .title-screen-container{
+//         height: 100vh;
+//         max-height: 700px;
+//         min-height: 650px;
+//     }
 
-}
+// }
 
 
 
