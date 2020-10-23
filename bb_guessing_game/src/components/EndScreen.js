@@ -25,6 +25,16 @@ function EndScreen(props){
                 return <img src={endGifs[3]} alt= {'Bad'} />
         }
     }
+    function chooseAnswerColor(){
+        switch(props.score){
+            case 'okay':
+                return '#fad201'
+            case 'bad':
+                return 'red'
+            default:
+                return '#369457'
+        }
+    }
 
     return(
         <div className='end-screen-container'>
@@ -38,11 +48,11 @@ function EndScreen(props){
                 </div>
                 <div className='end-screen-message'>
                     <h3>You Answered</h3>
-                    <h2>{props.output.current}</h2>
+                    <h2 style={{color: chooseAnswerColor()}}>{props.output.current}</h2>
                     <h3>Correctly</h3>
                 </div>
             </div>
-            <div className='.btn-container'>
+            <div className='btn-container'>
                 <button className='btn' onClick={()=>{deactivateScreen()}}>Play Again</button>
             </div>
         </div>

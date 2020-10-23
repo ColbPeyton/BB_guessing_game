@@ -153,7 +153,17 @@
 }
 
 @media (min-width: 374px){
+  .base-timer {
+    height: 195px;
+    width: 195px;
+  }
 
+  .base-timer__label {
+    width: 195px;
+    height: 195px;
+    font-size: 1.5rem;
+
+  }
 }
 
 // Small devices (landscape phones, 576px and up)

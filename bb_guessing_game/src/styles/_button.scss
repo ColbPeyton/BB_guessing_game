@@ -5,6 +5,12 @@
     background: $primary-green-light;
     color: #fff;
     font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:hover{
+        background: $seconday-green-light;
+    }
 }
 
 @media (max-width: 767px) and (orientation:landscape) {
