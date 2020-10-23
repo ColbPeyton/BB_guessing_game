@@ -78,11 +78,18 @@
     }
 }
 
-@media (max-width: 767px) and (orientation:landscape) {
+@media (max-width: 813px) and (max-height: 416px) and (orientation:landscape) {
     .answer-button{
-        padding: 0.3rem;
-        margin-right: 5px;
-        font-size: 0.6rem;
+        padding: 0.60rem;
+        margin-right: 8px;
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 569px) and (orientation:landscape) {
+    .answer-button{
+        padding: 0.5rem;
+        margin-right: 10px;
+        font-size: 0.75rem;
     }
 }
 
@@ -96,6 +103,7 @@
 @media (min-width: 992px) { 
     .answer-button{
         padding: 0.8rem 0;
+        font-size: 1.25rem;
     }
 }
 
