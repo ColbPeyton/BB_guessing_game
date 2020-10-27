@@ -15,9 +15,12 @@ function AnswerStatus(props){
     }
 
     return(
-        <div className={`answer-status-container ${decideClass()}`}>
-            {renderIcon()}
+        <div className='answer-status'>
+            <div className={`answer-status-container ${decideClass()}`}>
+                {renderIcon()}
+            </div>
         </div>
+
     )
 }
 
